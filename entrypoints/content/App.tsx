@@ -30,7 +30,6 @@ const StickyIconComponent = () => {
 
   // Debugging and checking modal visibility state
   useEffect(() => {
-    console.log("modalVisible changed:", modalVisible);
   }, [modalVisible]);
 
   const handleCloseModal = () => {
@@ -39,13 +38,11 @@ const StickyIconComponent = () => {
 
   const handleIconClick = () => {
     setModalVisible(true);
-    console.log("Icon clicked, setting modalVisible to true");
   };
 
   const displayStickyIcon = () => {
     const img = document.createElement("img");
 
-    console.log("Creating image:", img);
     img.addEventListener("click", handleIconClick);
     img.src = Icon;
     img.width = 50;
@@ -61,7 +58,6 @@ const StickyIconComponent = () => {
     const messageTextArea = messageTextAreas[messageTextAreas.length - 1];
 
     if (messageTextArea) {
-      console.log("Appending image to message text area");
       messageTextArea.appendChild(img);
     } else {
       console.log("Message text area not found");
@@ -84,8 +80,6 @@ const StickyIconComponent = () => {
         ".msg-form__msg-content-container"
       );
 
-      console.log("messageTextAreas:", messageTextAreas);
-      console.log("messageContainers:", messageContainers);
 
       // Get the last element of the matching elements
       const messageTextArea = messageTextAreas[messageTextAreas.length - 1];

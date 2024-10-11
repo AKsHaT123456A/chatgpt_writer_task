@@ -10,7 +10,6 @@ export default defineContentScript({
             name: 'linkedin-message-box',
             position: 'inline',
             onMount: (container) => {
-                console.log(container);
                 const root = ReactDOM.createRoot(container);
                 root.render(
                         <App/>

@@ -16,7 +16,6 @@ interface PromptModalProps {
 }
 
 const PromptModal = ({ modalVisible, handleCloseModal, setModalVisible }: PromptModalProps) => {
-    console.log({ modalVisible, handleCloseModal, setModalVisible });
     
   const [inputValue, setInputValue] = useState("");
   const [generated, setGenerated] = useState(false);
