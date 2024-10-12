@@ -33,7 +33,7 @@ This Chrome extension enhances LinkedIn messaging by providing an AI-based sugge
 
 Check out the working demo of the extension here:
 
-[![LinkedIn AI Extension Demo](https://cdn.loom.com/sessions/thumbnails/2a3fca8b6f774f22b69fe0bedc7268d6-with-play.gif)](https://www.loom.com/share/2a3fca8b6f774f22b69fe0bedc7268d6?sid=aa73b7a6-a1bb-4352-a9a5-0bb73bf0791c)
+[![LinkedIn AI Extension Demo](https://github.com/user-attachments/assets/3c1eabc3-538b-4edb-a3d1-1beabfa2911f)
 
 ## Installation and Usage:
 
