@@ -39,8 +39,8 @@ Check out the working demo of the extension here:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-repo/LinkedIn-AI-Extension.git
-   cd LinkedIn-AI-Extension
+   git clone git@github.com:AKsHaT123456A/chatgpt_writer_task.git
+   cd chatgpt_writer_task
    ```
 
 2. **Install Dependencies**:
@@ -58,7 +58,13 @@ Check out the working demo of the extension here:
    # or
    yarn build:wxt
    ```
-
+4.**Start the Extension**:
+   Use the WXT CLI to build the project:
+   ```bash
+   npm run build
+   # or
+   yarn build:firefox
+   ```
 4. **Load the Extension in Chrome**:
    - Go to `chrome://extensions` in your browser.
    - Enable **Developer Mode**.
@@ -68,22 +74,6 @@ Check out the working demo of the extension here:
    - Open LinkedIn and go to the message input field.
    - The AI icon will appear when you click on the message field.
 
-## Project Structure:
-
-```
-- src/
-  - assets/                  # Stores static assets like icons
-  - components/              # Reusable React components
-    - PromptModal.tsx        # Modal component for prompt input and response display
-    - AIIcon.tsx             # AI Icon component
-  - types/                   # TypeScript types used in the project
-  - App.tsx                  # Main application file
-  - index.tsx                # Entry point for React
-  - styles/                  # Tailwind configuration and custom styles
-  - background.ts            # Handles Chrome extension background events
-  - contentScript.tsx        # Main script that interacts with LinkedIn DOM
-  - manifest.json            # Chrome extension configuration
-```
 ## Known Issues:
 - The "Regenerate" button is currently non-functional as specified in the task requirements.
 - If LinkedIn updates its DOM structure or class names, the extension may need to be updated accordingly.
