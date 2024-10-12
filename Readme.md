@@ -61,9 +61,9 @@ Check out the working demo of the extension here:
 4.**Start the Extension**:
    Use the WXT CLI to build the project:
    ```bash
-   npm run build
+   npm run dev
    # or
-   yarn build:firefox
+   npm run dev:firefox
    ```
 4. **Load the Extension in Chrome**:
    - Go to `chrome://extensions` in your browser.
