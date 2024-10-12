@@ -35,7 +35,8 @@ const PromptModal = ({ modalVisible, handleCloseModal, setModalVisible }: Prompt
     setModalVisible(false);
     const replyText: string = TEXT_MESSAGE.content ?? "";
 
-    const messageElement: HTMLElement | null = document.querySelector(".msg-form__contenteditable");
+    const messageElements: NodeListOf<Element> = document.querySelectorAll(".msg-form__contenteditable");
+    const messageElement: HTMLElement | null = messageElements.length > 0 ? messageElements[messageElements.length - 1] as HTMLElement : null;
 
     if (messageElement) {
       const paragraph: HTMLParagraphElement = document.createElement("p");
@@ -43,82 +44,88 @@ const PromptModal = ({ modalVisible, handleCloseModal, setModalVisible }: Prompt
       messageElement.textContent = "";
       messageElement.appendChild(paragraph);
 
+      // Manually trigger an input event
+      const inputEvent = new Event('input', { bubbles: true });
+      messageElement.dispatchEvent(inputEvent);
+
       const label: HTMLElement | null = document.querySelector(".msg-form__placeholder");
       if (label) {
         label.removeAttribute("data-placeholder");
       }
 
       const sendButton: HTMLElement | null = document.querySelector(".msg-form__send-button");
-      sendButton?.removeAttribute("disabled");
+      if (sendButton) {
+        sendButton.removeAttribute("disabled");
+        // You can also force focus or other actions if needed
+      }
+      setGenerated(false);
     }
   };
 
   return (
     <>
-    <div
-      className="modal flex flex-col bg-white p-4 rounded-[15px] shadow-2xl font-custom1 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[999999]" // Centered the modal
-      style={{ display: modalVisible ? "flex" : "none" }}
-    >
-      {promptModalVisible ? (
-        <div className="chat-area flex flex-col w-[450px] py-4 gap-y-4 rounded">
-      <div className="message bg-[#DFE1E7] p-2 rounded-[10px] self-end">
-        <p className="text-[#666D80] text-[15px]">{prompt}</p>
-      </div>
-      <div className="reply flex bg-[#DBEAFE] rounded-lg p-2 w-[300px]">
-        <p className="reply-msg text-[#666D80] text-[15px]">{TEXT_MESSAGE.content}</p>
-      </div>
-        </div>
-      ) : (
-        <div></div>
-      )}
-
-      <div className="first-input mb-4">
-        <input
-      type="text"
-      value={inputValue}
-      onChange={(e) => setInputValue(e.target.value)}
-      onKeyDown={
-        (e) => {
-          if (e.key === "Enter") {
-            handleGenerateClick();
-          }
-        }
-      }
-      className="text-[#666D80] text-[15px] p-2 w-[450px] border border-[#C1C7D0] rounded-[8px]"
-      placeholder="Your prompt"
-        />
-      </div>
-
-      <div className="second-button flex justify-end items-center">
-        {!generated ? (
-      <ButtonComponent
-        label="Generate"
-        action={handleGenerateClick}
-        image={Generate}
-        buttonClass="px-4 py-2 text-[15px] bg-[#3B82F6] flex flex-row text-white rounded-[8px] gap-2"
-        ImgClass="h-[18px] w-[14px] pt-1"
-      />
+      <div
+        className="modal flex flex-col bg-white p-4 rounded-[15px] shadow-2xl font-custom1 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[999999]" // Centered the modal
+        style={{ display: modalVisible ? "flex" : "none" }}
+      >
+        {promptModalVisible ? (
+          <div className="chat-area flex flex-col w-[450px] py-4 gap-y-4 rounded">
+            <div className="message bg-[#DFE1E7] p-2 rounded-[10px] self-end" style={{display:generated?"flex":"none"}}>
+              <p className="text-[#666D80] text-[15px]">{prompt}</p>
+            </div>
+            <div className="reply flex bg-[#DBEAFE] rounded-lg p-2 w-[300px]" style={{display:generated?"flex":"none"}}>
+              <p className="reply-msg text-[#666D80] text-[15px]">{TEXT_MESSAGE.content}</p>
+            </div>
+          </div>
         ) : (
-      <div className="flex flex-row gap-x-2">
-        <ButtonComponent
-        label="Insert"
-        action={handleInsertClick}
-        image={Input}
-        buttonClass="px-4 py-2 text-[15px] bg-white flex flex-row text-[#666D80] border border-[#666D80] rounded-lg gap-2"
-        ImgClass="w-[11px] pt-2"
-        />
-
-        <ButtonComponent
-        label="Regenerate"
-        action={() => {}}
-        image={Reload}
-        buttonClass="px-4 py-2 text-[15px] bg-[#3B82F6] flex flex-row text-white rounded-lg gap-2"
-        ImgClass="h-[19px] w-[13px] pt-1"
-        />
-      </div>
+          <div></div>
         )}
+
+        <div className="first-input mb-4">
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleGenerateClick();
+              }
+            }}
+            className="text-[#666D80] text-[15px] p-2 w-[450px] border border-[#C1C7D0] rounded-[8px]"
+            placeholder="Your prompt"
+          />
+        </div>
+
+        <div className="second-button flex justify-end items-center">
+          {!generated ? (
+            <ButtonComponent
+              label="Generate"
+              action={handleGenerateClick}
+              image={Generate}
+              buttonClass="px-4 py-2 text-[15px] bg-[#3B82F6] flex flex-row text-white rounded-[8px] gap-2"
+              ImgClass="h-[18px] w-[14px] pt-1"
+            />
+          ) : (
+            <div className="flex flex-row gap-x-2">
+              <ButtonComponent
+                label="Insert"
+                action={handleInsertClick}
+                image={Input}
+                buttonClass="px-4 py-2 text-[15px] bg-white flex flex-row text-[#666D80] border border-[#666D80] rounded-lg gap-2"
+                ImgClass="w-[11px] pt-2"
+              />
+
+              <ButtonComponent
+                label="Regenerate"
+                action={() => {}}
+                image={Reload}
+                buttonClass="px-4 py-2 text-[15px] bg-[#3B82F6] flex flex-row text-white rounded-lg gap-2"
+                ImgClass="h-[19px] w-[13px] pt-1"
+              />
+            </div>
+          )}
+        </div>
       </div>
-    </div>
       {modalVisible ? (
         <div
           onClick={handleCloseModal}
