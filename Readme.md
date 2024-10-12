@@ -1,5 +1,4 @@
 
-```markdown
 # LinkedIn AI Chrome Extension
 
 This Chrome extension enhances LinkedIn messaging by providing an AI-based suggestion interface. Users can interact with a modal to generate a predefined response and insert it into the message input field.
@@ -85,7 +84,6 @@ Check out the working demo of the extension here:
   - contentScript.tsx        # Main script that interacts with LinkedIn DOM
   - manifest.json            # Chrome extension configuration
 ```
-
 ## Known Issues:
 - The "Regenerate" button is currently non-functional as specified in the task requirements.
 - If LinkedIn updates its DOM structure or class names, the extension may need to be updated accordingly.
@@ -102,5 +100,3 @@ Check out the working demo of the extension here:
 
 ## License:
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-```
