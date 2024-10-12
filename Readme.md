@@ -26,7 +26,7 @@ This Chrome extension enhances LinkedIn messaging by providing an AI-based sugge
 ## Edge Cases and Enhancements:
 - **Disabled Icon Selection**: The AI icon is not selectable or draggable, ensuring smooth UX without accidental interactions.
 - **Dynamic Icon Positioning**: The icon always appears next to the most recently focused chat field.
-- **Insert Text via `Enter` Key**: The extension allows users to insert the generated text by pressing Enter or clicking the button.
+- **Generate Text via `Enter` Key**: The extension allows users to generate text by pressing Enter or clicking the button.
 
 ## Demo Video:
 
