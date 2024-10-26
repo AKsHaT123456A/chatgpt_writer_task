@@ -83,7 +83,7 @@ For this project, ensure to create an `.env.local` file in the root directory fo
 # Example environment variables
 REACT_APP_API_KEY=your_api_key_here
 REACT_APP_OTHER_CONFIG=your_other_config_here
-
+```
 
 ## Known Issues:
 - If LinkedIn updates its DOM structure or class names, the extension may need to be updated accordingly.
