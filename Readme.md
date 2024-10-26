@@ -74,8 +74,18 @@ Check out the working demo of the extension here:
    - Open LinkedIn and go to the message input field.
    - The AI icon will appear when you click on the message field.
 
+
+## Environment Variables
+
+For this project, ensure to create an `.env.local` file in the root directory for any sensitive data or environment-specific configurations. You may want to include the following variables:
+
+```plaintext
+# Example environment variables
+REACT_APP_API_KEY=your_api_key_here
+REACT_APP_OTHER_CONFIG=your_other_config_here
+
+
 ## Known Issues:
-- The "Regenerate" button is currently non-functional as specified in the task requirements.
 - If LinkedIn updates its DOM structure or class names, the extension may need to be updated accordingly.
 
 ## Future Improvements:
